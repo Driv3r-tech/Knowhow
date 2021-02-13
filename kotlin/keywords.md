@@ -36,13 +36,12 @@ package com.main
 import com.classes.Person
 
 fun main(){
-
-    println("Age "+ Person.age)
-    //println("ID: "+ Person.id) // error - Unresolved reference: id
+    println("Age: "+ Person.age)
+    // println("ID: "+ Person.id) // error - Unresolved reference: id
 
     val bob: Person = Person()
+    // println("Bob age: "+ bob.age) // error - Unresolved reference: age
     println("Bob ID: "+ bob.id)
-    
 }
 ```
 **person.kt**
