@@ -19,7 +19,10 @@ fun main() {
 
 } 
 ```
->My name is James
+**Вывод**
+```
+My name is James
+```
 
 ##
 ##
@@ -36,7 +39,7 @@ import com.classes.Person
 fun main(){
     println("Number A: "+ Person.age)
 
-    // println("Number B: "+ Person.id) // error - Unresolved reference: id
+    println("Number B: "+ Person.id) // error - Unresolved reference: id
 
     val bob: Person = Person()
 
@@ -54,8 +57,12 @@ class Person {
     var id : Int = 9
 }
 ```
->Number A: 7
->Number B (new class): 9
+**Вывод**
+```
+Number A: 7
+Number B (new class): 9
+```
+
 
 ##
 ##
