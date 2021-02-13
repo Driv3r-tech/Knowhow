@@ -36,12 +36,14 @@ package com.main
 import com.classes.Person
 
 fun main(){
+
     println("Age: "+ Person.age)
     // println("ID: "+ Person.id) // error - Unresolved reference: id
 
     val bob: Person = Person()
     // println("Bob age: "+ bob.age) // error - Unresolved reference: age
     println("Bob ID: "+ bob.id)
+    
 }
 ```
 **person.kt**
@@ -49,10 +51,13 @@ fun main(){
 package com.classes
 
 class Person {
+
     companion object {
         var age : Int = 7
     }
+    
     var id : Int = 9
+    
 }
 ```
 **Вывод**
