@@ -1,5 +1,6 @@
 
 # Ключевые слова
+>Важное примечание: вывод ошибок сделан для того, чтобы понятней была работа кода.
 
 ## inline
 Позволяет компилятору ***не выделять память*** и просто скопировать встроенный код функции в вызывающем месте.
@@ -14,7 +15,6 @@ inline fun example( str : String, mycall :(String)-> Unit) {
 fun main() {
 
     print("My name is ")
-
     example("James",::print)
 
 } 
@@ -37,13 +37,13 @@ package com.main
 import com.classes.Person
 
 fun main(){
-    println("Number A: "+ Person.age)
 
-    println("Number B: "+ Person.id) // error - Unresolved reference: id
+    println("Age "+ Person.age)
+    println("ID: "+ Person.id) // error
 
     val bob: Person = Person()
-
-    println("Number B (new class): "+ bob.id)
+    println("Bob ID: "+ bob.id)
+    
 }
 ```
 **person.kt**
@@ -59,8 +59,9 @@ class Person {
 ```
 **Вывод**
 ```
-Number A: 7
-Number B (new class): 9
+Age: 7
+Unresolved reference: id
+Bob ID: 9
 ```
 
 
