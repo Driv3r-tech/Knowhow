@@ -1,6 +1,5 @@
 
 # Ключевые слова
->Важное примечание: вывод ошибок сделан для того, чтобы понятней была работа кода.
 
 ## inline
 Позволяет компилятору ***не выделять память*** и просто скопировать встроенный код функции в вызывающем месте.
@@ -39,7 +38,7 @@ import com.classes.Person
 fun main(){
 
     println("Age "+ Person.age)
-    println("ID: "+ Person.id) // error
+    //println("ID: "+ Person.id) // error - Unresolved reference: id
 
     val bob: Person = Person()
     println("Bob ID: "+ bob.id)
@@ -60,7 +59,6 @@ class Person {
 **Вывод**
 ```
 Age: 7
-Unresolved reference: id
 Bob ID: 9
 ```
 
