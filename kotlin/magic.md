@@ -1,7 +1,7 @@
-# Магические функции
+# Особенности языка
 
 ## Extension Functions 
-Мы можем расширить класс, ***не изменяя его***, и добавить новый метод или свойство.
+Мы можем расширить класс, ***не изменяя его***, и добавить новый метод.
 
 ```kotlin
 private fun String.exampleDeleteSpaces(): String {
@@ -19,4 +19,29 @@ fun main() {
 **Вывод**
 ```
 Hello,World
+```
+
+##
+##
+
+## Extension Properties
+Мы можем расширить класс, ***не изменяя его***, и добавить новое свойство.
+
+```kotlin
+private val String.first: Char
+    get() {
+        
+        return this[2]
+        
+    }
+        
+fun main() {
+        
+    print("Kotlin".first)
+
+} 
+```
+**Вывод**
+```
+t
 ```
