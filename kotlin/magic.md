@@ -1,0 +1,3 @@
+*Магические функции
+
+**Extension Functions
