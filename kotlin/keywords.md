@@ -71,4 +71,38 @@ Bob ID: 9
 ##
 
 ## infix
-Позволяет ...
+Позволяет сделать код на вид таким, как выглядит **естественный язык**.
+
+```kotlin
+
+val ice = "ice"
+val juice = "juice"
+val sugar = "sugar"
+
+infix fun String.mix(str: String): String {
+    
+    when (setOf(this,str)){
+        setOf(ice, juice) -> return "mix_a"
+        setOf(sugar, "mix_a") -> return "Mama-mia"
+        else -> return "-"
+    }
+    
+}
+
+fun main() {
+    
+    val coctail = ice mix juice mix sugar 
+    println("My coctail: $coctail")
+    
+}
+```
+**Вывод**
+```
+My coctail: Mama-mia
+```
+
+##
+##
+
+## 
+
