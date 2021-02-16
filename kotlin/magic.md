@@ -55,18 +55,21 @@ t
 **До**
  ```kotlin
 fun main() {
+
     val builder = StringBuilder()
     builder.append("Hello ")
     builder.append("World ")
     builder.append("Kotlin ")
     builder.append("The Best ")
     print(builder.toString())
+    
 }
  ```
  
 **После**
 ```kotlin
 fun main() {
+
     StringBuilder().apply {
 
     append("Hello ")
@@ -75,17 +78,18 @@ fun main() {
     append("The Best")
     
     }.let {
-
         print(it.toString())
-
     }
+    
 }
 ```
 **Прототип**
 ```kotlin
 
 public inline fun <T> T.apply(block: T.() -> Unit): T{
+
     block()
+    
     return this
 }
 
@@ -100,4 +104,4 @@ Hello World Kotlin The Best
 ##
 ##
 
-## 
+## Скоро обновление
