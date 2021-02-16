@@ -66,26 +66,35 @@ t
  
 **После**
 ```kotlin
-StringBuilder().apply {
+fun main() {
+    StringBuilder().apply {
 
-    append("Hello")
-    append("World")
-    append("Kotlin")
+    append("Hello ")
+    append("World ")
+    append("Kotlin ")
     append("The Best")
     
-}.let {
+    }.let {
 
-    print(it.toString())
-    
+        print(it.toString())
+
+    }
 }
 ```
 **Прототип**
 ```kotlin
 
-public inline fun <T> T.apply(block: T.() -> Unit): T
+public inline fun <T> T.apply(block: T.() -> Unit): T{
+    block()
+    return this
+}
 
-public inline fun <T, R> T.let(block: (T) -> R): R
+public inline fun <T, R> T.let(block: (T) -> R): R = block(this)
 
+```
+**Вывод**
+```
+Hello World Kotlin The Best
 ```
 
 ##
