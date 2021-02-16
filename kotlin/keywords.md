@@ -74,31 +74,34 @@ Bob ID: 9
 Позволяет сделать код на вид таким, как выглядит **естественный язык**.
 
 ```kotlin
-
 val ice = "ice"
 val juice = "juice"
-val sugar = "sugar"
+val coffee = "coffee"
 
 infix fun String.mix(str: String): String {
     
     when (setOf(this,str)){
-        setOf(ice, juice) -> return "mix_a"
-        setOf(sugar, "mix_a") -> return "Mama-mia"
+    
+        setOf(juice, coffee) -> return "Boyfriend"
+        setOf(ice, coffee) -> return "Iced coffee"
+        setOf(ice, juice) -> return ice+juice
+        setOf(coffee, ice+juice) -> return "Tiger"
         else -> return "-"
+        
     }
     
 }
 
 fun main() {
     
-    val coctail = ice mix juice mix sugar 
+    val coctail = ice mix juice mix coffee 
     println("My coctail: $coctail")
     
 }
 ```
 **Вывод**
 ```
-My coctail: Mama-mia
+My coctail: Tiger
 ```
 
 ##
