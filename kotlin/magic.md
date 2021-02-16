@@ -54,12 +54,14 @@ t
 
 **До**
  ```kotlin
- val builder = StringBuilder()
- builder.append("Hello")
- builder.append("World")
- builder.append("Kotlin")
- builder.append("The Best")
- print(builder.toString())
+fun main() {
+    val builder = StringBuilder()
+    builder.append("Hello ")
+    builder.append("World ")
+    builder.append("Kotlin ")
+    builder.append("The Best ")
+    print(builder.toString())
+}
  ```
  
 **После**
