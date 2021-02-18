@@ -107,5 +107,42 @@ My coctail: Tiger
 ##
 ##
 
+## reified
+Использоуется только в ```inline``` функциях. Сохраняет ***доступ к объявленному типу***.
+
+```kotlin
+var _map = arrayOf("Paris", 2_000, 'v')
+
+inline fun <reified T> getItemFromMap(key: Int): T? {
+    
+    val item = _map.get(key)
+    println(item)
+    
+    if(T::class == item::class) {
+        return item as T
+    }
+    else { 
+        return null
+    }
+    
+}
+
+fun main() {
+    
+    val list: String = getItemFromMap(1)?: "<Undefined>"
+    println(list)
+ 
+}
+```
+**Вывод**
+```
+2000
+<Undefined>
+```
+
+##
+##
+
 ## 
+
 
