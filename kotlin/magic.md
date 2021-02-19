@@ -1,6 +1,11 @@
 # Особенности языка
+## Содержание
 
-## Extension Functions 
+1. [Extension Functions](#extension-functions)
+2. [Extension Properties](#extension-properties)
+3. [Сложные лямбды](#Сложные-лямбды)
+
+## Extension Functions
 Мы можем расширить класс, ***не изменяя его***, и добавить _новый метод_.
 
 ```kotlin
@@ -20,9 +25,9 @@ fun main() {
 ```
 Hello,World
 ```
-
-##
-##
+[Содержание](#содержание)
+____
+____
 
 ## Extension Properties
 Мы можем расширить класс, ***не изменяя его***, и добавить _новое свойство_.
@@ -45,7 +50,7 @@ fun main() {
 ```
 t
 ```
-
+[Содержание](#содержание)
 ##
 ##
 
@@ -100,7 +105,7 @@ public inline fun <T, R> T.let(block: (T) -> R): R = block(this)
 ```
 Hello World Kotlin The Best
 ```
-
+[Содержание](#содержание)
 ##
 ##
 
