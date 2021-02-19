@@ -2,10 +2,10 @@
 # Ключевые слова
 ## Содержание
 
-0. [inline](#inline)
-1. [static / companion object](#static-or-companion-object)
-2. [infix](#infix)
-3. [reified](#reified)
+1. [inline](#inline)
+2. [static / companion object](#static-or-companion-object)
+3. [infix](#infix)
+4. [reified](#reified)
 
 ## inline
 Позволяет компилятору ***не выделять память*** и просто скопировать встроенный код функции в вызывающем месте.
