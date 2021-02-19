@@ -26,7 +26,7 @@ fun main() {
 Hello,World
 ```
 [Содержание](#содержание)
-____
+
 ____
 
 ## Extension Properties
