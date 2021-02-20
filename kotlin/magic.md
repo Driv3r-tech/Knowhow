@@ -4,6 +4,7 @@
 1. [Extension Functions](#extension-functions)
 2. [Extension Properties](#extension-properties)
 3. [Сложные лямбды](#Сложные-лямбды)
+4. [trailing lambda](#trailing-lambda)
 
 ## Extension Functions
 Мы можем расширить класс, ***не изменяя его***, и добавить _новый метод_.
@@ -104,6 +105,25 @@ public inline fun <T, R> T.let(block: (T) -> R): R = block(this)
 **Вывод**
 ```
 Hello World Kotlin The Best
+```
+[Содержание](#содержание)
+
+____
+
+## trailing lambda
+
+**После**
+```kotlin
+
+```
+**Прототип**
+```kotlin
+
+
+```
+**Вывод**
+```
+
 ```
 [Содержание](#содержание)
 
