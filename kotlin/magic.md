@@ -112,18 +112,24 @@ ____
 
 ## trailing lambda
 
-**После**
+
 ```kotlin
+inline fun <R> R.example(
+    initial: R,
+    operation: (acc: R, e: R) -> R
+): R = operation (initial, this)
 
-```
-**Прототип**
-```kotlin
+fun main() {
 
-
+    val test = 5
+    val result = test.example(3) { acc, e -> acc + e }
+    println("Result: $result")
+    
+}
 ```
 **Вывод**
 ```
-
+Result: 8
 ```
 [Содержание](#содержание)
 
