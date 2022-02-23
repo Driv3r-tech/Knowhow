@@ -1,0 +1,8 @@
+#include <iostream>
+#include <cmath>
+int main() {
+	double n; 
+	std::cin >> n;
+	std::cout << round(exp(log(n) + 0.42 / n - 0.5));
+	return 0;
+}
