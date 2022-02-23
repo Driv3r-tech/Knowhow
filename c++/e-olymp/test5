@@ -1,0 +1,111 @@
+#include <iostream>
+#include <vector>
+#include <math.h>
+#include <algorithm>
+#include <iomanip>
+
+using namespace std;
+
+int main(){
+
+    cout.setf(ios_base::fixed);
+    vector<uint8_t> primes, divisors, divisorsAlpha;
+    int K;
+    int8_t i, D, j, key=0;
+    double N, RES=-1;
+
+    cin>>K;
+
+    for (key=0;key<2;key++){
+
+        D = 2*K;
+        if (key) D--;
+        N = 1;
+        divisors.clear();
+
+
+        for(i=2;i<=sqrt(D); ){
+            if (D%i == 0) {
+                    divisors.insert(divisors.begin(),i);
+                    D/=i;
+            }
+            else i++;
+        }
+        if (D!=1) divisors.insert(divisors.begin(),D);
+
+        const int NN = 100000;
+        int lp[NN+1];
+
+        for (int i=2; i<=NN && primes.size()<divisors.size(); ++i) {
+            if (lp[i] == 0) {
+                lp[i] = i;
+                primes.push_back (i);
+            }
+            for (int j=0; j<(int)primes.size() && primes[j]<=lp[i] && i*primes[j]<=NN; ++j)
+                lp[i * primes[j]] = primes[j];
+        }
+
+        divisorsAlpha=divisors;
+
+        D=1;
+        if (divisors.size()>2)
+            for(j=divisors.size()-1;j>1&&D==1;j--){ D=0;
+                for(i=divisors.size()-2;i>=0;i--)
+                        if (pow(primes[j],divisors[j]-1)>pow(primes[i],(divisors[i]*divisors[j]-divisors[i]))){
+                            divisors[i]*=divisors[j];
+                            divisors.pop_back();
+                            D=1;
+                            i=divisors.size();
+                            sort(divisors.rbegin(), divisors.rend());
+                        }
+            }
+
+
+
+
+        for (i=0;i<divisors.size();i++){
+            N*=pow(primes[i],divisors[i]-1);
+            //cout  << " " << divisors[i];
+        }
+        //cout << " | " << N << endl;
+        if (RES!=-1) {if (N<RES) RES=N;}
+        else RES=N;
+
+        N = 1;
+
+        while(divisorsAlpha.size()>2){
+
+            divisors = divisorsAlpha;
+
+            divisors[divisors.size()-2]*=divisors[divisors.size()-1];
+            divisors.pop_back();
+            sort(divisors.rbegin(), divisors.rend());
+
+            divisorsAlpha = divisors;
+
+            D=1;
+            for(j=divisors.size()-1;j>1&&D==1;j--){ D=0;
+                for(i=divisors.size()-2;i>=0;i--)
+                        if (pow(primes[j],divisors[j]-1)>pow(primes[i],(divisors[i]*divisors[j]-divisors[i]))){
+                            divisors[i]*=divisors[j];
+                            divisors.pop_back();
+                            D=1;
+                            i=divisors.size();
+                            sort(divisors.rbegin(), divisors.rend());
+                        }
+            }
+
+            for (i=0;i<divisors.size();i++){
+                N*=pow(primes[i],divisors[i]-1);
+                //cout  << " " << divisors[i];
+            }
+            //cout << " | " << N << endl;
+            if (N<RES) RES=N;
+            N = 1;
+        }
+
+    }
+
+    cout << setprecision(0) << RES << endl;
+    return 0;
+}
