@@ -1,0 +1,128 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+vector<int> points,d,c;
+void sortVector(vector<int> c, bool descend, bool secret);
+vector<int> reduceElement(vector<int> v, int element);
+void findRes(int n);
+int res=0;
+vector <int> update(vector <int> V, int sizeV);
+
+int main()
+{
+    int n,i;
+    cin>>n;
+
+    d.resize(n);
+    c.resize(n);
+
+    for(i=0;i<n;i++){
+        cin.ignore();
+        cin>>d[i]>>c[i];
+    }
+
+    for(i=0;i<n;){
+        if(d[i]<=0) {
+                c = reduceElement(c,i);
+                d = reduceElement(d,i);
+                n--;
+        } else i++;
+    }
+
+    findRes(n);
+
+    return 0;
+}
+
+void findRes(int n){
+    vector<int> f,l;
+    int i,s=0;
+    int maxElement;
+
+    if (n==0) cout<<res+0;
+    else if (n==1) cout<<res+c[0]*d[0];
+    else {
+
+        f.resize(n);
+        l.resize(n);
+        points.clear();
+        points.resize(n);
+
+        for(i=0;i<n;i++){
+            f[i] = c[i]*d[i];
+            s += c[i];
+        }
+
+        for(i=0;i<n;i++)
+            l[i] = s - c[i];
+
+        sortVector(c, false, false);
+        sortVector(f, false, true);
+        sortVector(l, true, true);
+
+        maxElement = max_element(points.begin(),points.end()) - points.begin();
+
+        res += f[maxElement];
+        d[maxElement] = 0;
+
+        for(i=0;i<d.size();i++)
+            d[i]-=1;
+
+        for(i=0;i<n;){
+            if(d[i]<=0) {
+                    c = reduceElement(c,i);
+                    d = reduceElement(d,i);
+                    n--;
+            } else i++;
+        }
+
+        findRes(n);
+    }
+}
+
+void sortVector(vector<int> c, bool descend, bool secret){
+
+    vector<int> v;
+    int i,j,k;
+
+    v = c;
+    if (descend) sort( v.begin(), v.end(), greater<int>() ); //убывание
+    else sort( v.begin(), v.end() ); //возрастание
+
+    for(i=0;i<v.size();i++)
+            if(v[i]==v[i+1])
+                    v[i] = -3;
+
+    if (secret) k = points.size();
+    else k = 1;
+
+    for(i=0;i<v.size();i++)
+        for(j=0;j<c.size();j++)
+            if(c[j] == v[i]) {
+                points[j] += i*k;
+                break;
+            }
+}
+
+vector<int> reduceElement(vector<int> v, int element){
+
+    int i;
+    vector <int> reserv;
+    reserv.resize(v.size()-1);
+
+    for(i=0;i<reserv.size();i++)
+        if (i>=element) reserv[i] = v[i+1];
+        else reserv[i] = v[i];
+
+    return reserv;
+
+}
+
+vector <int> update(vector <int> V, int sizeV){
+
+    V.clear();
+    V.resize(sizeV);
+
+}
