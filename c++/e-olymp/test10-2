@@ -1,0 +1,16 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int N,k;
+    double m=0;
+    cin>>N;
+    for(k=0;m<=0.5;k++){
+        m += (double) 1/(N-k);
+    }
+    k = N - k+1;
+    cout << k;
+    return 0;
+}
