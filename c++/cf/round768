@@ -1,1 +1,52 @@
-test
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+void fillVec(int size, vector<int>& vec){
+    int num;
+    while(size){
+        cin>>num;
+        vec.push_back(num);
+        size--;
+    }
+}
+
+void swap(int *a, int *b) {
+    *a ^= (*b ^= (*a ^= *b));
+}
+
+void swapMaxElements(vector<int>& victim, vector<int>& thief){
+    for(int i=0;i<victim.size();i++){
+        if (thief[i]<victim[i]) swap(thief[i],victim[i]);
+    }
+}
+
+int main()
+{
+    int n,m,i;
+    vector<int> A,B;
+    cin>>n;
+    while(n){
+        cin>>m;
+        
+        fillVec(m,A);
+        fillVec(m,B);
+
+        if (max_element(A.begin(), A.end())>=max_element(B.begin(), B.end())) {
+            swapMaxElements(A,B);
+        }
+        else {
+            swapMaxElements(B,A);
+        }
+
+        cout<<(*max_element(A.begin(), A.end()))*(*max_element(B.begin(), B.end()))<<endl;
+
+        A.clear();
+        B.clear();
+        
+        n--;
+    }
+    return 0;
+}
