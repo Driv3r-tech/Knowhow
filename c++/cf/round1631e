@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+#define FOR(y,n) for (int i = y; i < n; i++)
+#define V 200001
+#define test 0
+
+using namespace std;
+
+int solve(int n, initializer_list <int> inputs) {
+    int ans = 0, cur = 0, max = 0;
+    int a[n], u = 0, m[V];
+    
+    
+    if (test)
+        for (auto i : inputs){
+            a[u] = i; u++;
+        }
+    else 
+        FOR(0, n){
+            cin >> a[i];
+        }
+      
+    
+    FOR(0, n){
+        m[a[i]] = i;
+    }
+    
+    
+    FOR(0, n){
+        max = max > m[a[i]] ? max : m[a[i]];
+        if (cur > i) ans ++;
+        else cur = max;
+    }
+    
+    return ans;
+}
+
+void run_tests(){
+    if (solve(7, {1,2,1,2,7,4,7}) != 2) cout<<"1_error\n" ;
+    else if (solve(13, {1,2,3,2,1,3,3,4,5,5,5,4,7}) != 7) cout<<"2_error\n";
+    else if (solve(8, {1,2,3,4,1,2,3,4}) != 5) cout<<"3_error\n";
+    else cout<<"Ok!\n";
+}
+
+int main(){
+    ios::sync_with_stdio(!cin.tie(0));
+    
+    if (test) run_tests();
+    else {int n; cin >> n; cout<<solve(n, {0});}
+    
+    return 0;
+}
